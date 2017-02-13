@@ -1,0 +1,45 @@
+body {
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    background: url('../asserts/background.png');
+}
+
+.container {
+    background-color: white;
+}
+
+.resume.row + div {
+    border-right: 1px solid #E6E6E6;
+}
+
+.intro img {
+    width: 6.5rem;
+}
+
+.intro h1 {
+    font-weight: bold;
+}
+
+.intro-title {
+    color: #CD5574;
+}
+
+.intro-place {
+    color: #787475;
+}
+
+.section-title {
+    color: #CA4D6A;
+}
+
+.section-experience-title {
+    color: #3E3C3D;
+}
+
+.section-experience-time {
+    color: #D6778E;
+}
+
+.section-experience-detail {
+    color: #7F7D7E;
+}
