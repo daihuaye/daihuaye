@@ -53,6 +53,14 @@ body {
     border-left: 1px solid #E6E6E6; 
 }
 
+.experience .section-experience {
+    padding-top: 2.5rem;
+}
+
+.experience div:nth-child(2) {
+    padding-top: 0rem;
+}
+
 .section-experience-title {
     color: #3E3C3D;
     font-weight: bold;
@@ -65,6 +73,14 @@ body {
 .section-experience-detail {
     color: #7F7D7E;
     font-size: 0.9rem;
+}
+
+.list-unstyled {
+    margin-bottom: 0;
+}
+
+.list-unstyled li:last-child p {
+    margin-bottom: 0;
 }
 
 footer {
@@ -128,8 +144,10 @@ footer .copyright {
 @media (max-width: 575px) {
     .resume-left-content:first-child {
         border-right: 0px;   
+        padding-bottom: 2rem;
     }
     .resume-right-content {
         padding-top: 0;
+        padding-bottom: 2rem;
     }
 }
