@@ -30,7 +30,7 @@
 						<h4 class="section-title">
 							Objective
 						</h4>
-						<p class="section-detail">Developer of next generation admin console for multiple VMware Horizon visual products; seeking to leverage my technical and professional expertise to grow for being a better developer.</p>
+						<p class="section-detail">seeking to leverage my technical and professional expertise to grow for being a better developer.</p>
 					</div>
 				</div>
 				<div class="row offset-1">
@@ -42,35 +42,10 @@
 					</div>
 				</div>
 				<div class="row offset-1">
-					<div class="col-10 pr-0">
+					<div class="col-10 pr-0 experience">
 						<h4 class="section-title">
 							Experience
 						</h4>
-						<div class="section-experience">
-							<h5 class="section-experience-title">
-								Member of Technical Staff <i class="fa fa-at" aria-hidden="true"></i> VMware
-							</h5>
-							<h6 class="section-experience-time">
-								7/2015 - Present
-							</h6>
-							<ul class="list-unstyled">
-								<li>
-									<p class="section-experience-detail">
-										Admin web console application is built on top of pluggable infrastructure, which will allow different pieces of functionality can be integrated and shared across other components.
-									</p>	
-								</li>
-								<li>
-									<p class="section-experience-detail">
-										Built pixel perfect & reusable widgets for features and improve loading speed of starting application from 5 seconds to half second by optimizing startup logic.
-									</p>
-								</li>
-								<li>
-									<p class="section-experience-detail">
-										Restructured and reduced CSS size from 218 KB to 106 KB by remove legacy libraries and modularize CSS for similar UI pattern.
-									</p>
-								</li>
-							</ul>
-						</div>
 					</div>
 				</div>
 				<div class="row offset-1">
@@ -199,19 +174,65 @@
 			</div>
 		</div>
 		<footer class="row">
-			<div class="col-sm-8">
+			<div class="col-8">
 				<div class="offset-2 copyright">Copyright 2017 <i class="fa fa-copyright" aria-hidden="true"></i> <a href="https://github.com/daihuaye" target="_blank">Daihua Ye</a></div>
 			</div>
-			<div class="social-media col-sm-4">
+			<div class="social-media col-4">
 				<a href="https://github.com/daihuaye"><i class="fa fa-github-square" aria-hidden="true"></i></a>
 				<a href="https://www.linkedin.com/in/daihuaye"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
 				<a href="https://twitter.com/daihuaye"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
 			</div>
 		</footer>
 	</div>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+    		apiKey: "AIzaSyAjfWjbvPPIjBH_vl43IB5fR-szwT3dSlw",
+    		authDomain: "daihuaye-a25ed.firebaseapp.com",
+    		databaseURL: "https://daihuaye-a25ed.firebaseio.com",
+    		storageBucket: "daihuaye-a25ed.appspot.com",
+    		messagingSenderId: "911331947635"
+		};
+		firebase.initializeApp(config);
+		var experiences = [];
+		var db = firebase.database().ref('/experiences');
+		db.on('value', function(data) {
+			experiences = data.val();
+			var source = $('#section-experience').html();
+			var template = Handlebars.compile(source);
+			var vmw = template(experiences.VMware);
+			var getInsured = template(experiences.GetInsured);
+			var nibbol = template(experiences.nibbol);
+			var TeletracNavman = template(experiences.TeletracNavman);
+			$('.experience').append(vmw, getInsured, nibbol, TeletracNavman);
+		});
+		
+	</script>
+	
+	<script type="text/x-handlebars-template" id="section-experience">
+		<div class="section-experience">
+			<h5 class="section-experience-title">
+				{{position}} <i class="fa fa-at" aria-hidden="true"></i> {{company}}
+			</h5>
+			<h6 class="section-experience-time">
+				{{start}} - {{end}}
+			</h6>
+			<ul class="list-unstyled">
+				{{#each details}}
+				<li>
+					<p class="section-experience-detail">
+						{{this}}
+					</p>	
+				</li>
+				{{/each}}
+			</ul>
+		</div>
+	</script>
 </body>
 
 </html>
