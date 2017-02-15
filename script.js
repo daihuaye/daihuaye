@@ -11,8 +11,8 @@
 		};
 		firebase.initializeApp(config);
 		var experiences = [];
-		var db = firebase.database().ref('/experiences');
-		db.on('value', function(data) {
+		var experienceDB = firebase.database().ref('/experiences');
+		experienceDB.on('value', function(data) {
 			experiences = data.val();
 			var source = $('#section-experience').html();
 			var template = Handlebars.compile(source);
@@ -21,5 +21,15 @@
 			var nibbol = template(experiences.nibbol);
 			var TeletracNavman = template(experiences.TeletracNavman);
 			$('.experience').append(vmw, getInsured, nibbol, TeletracNavman);
+		});
+		var profileDB = firebase.database().ref('profile');
+		profileDB.on('value', function (data) {
+			var profile = data.val();
+			$('.profile .section-detail').text(profile);
+		});
+		var objetiveDB = firebase.database().ref('objective');
+		objetiveDB.on('value', function (data) {
+			var profile = data.val();
+			$('.objective .section-detail').text(profile);
 		});
 })(window);
