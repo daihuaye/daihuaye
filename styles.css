@@ -4,7 +4,7 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background: url('../asserts/background.png');
+    background: url('./asserts/background.png');
 }
 
 .container {
