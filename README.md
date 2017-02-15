@@ -8,3 +8,4 @@ Third party dependences
 - Tether
 - Bootstrap 4
 - Firebase
+- Handlerbars
