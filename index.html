@@ -188,32 +188,7 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
-	<script>
-		// Initialize Firebase
-		var config = {
-    		apiKey: "AIzaSyAjfWjbvPPIjBH_vl43IB5fR-szwT3dSlw",
-    		authDomain: "daihuaye-a25ed.firebaseapp.com",
-    		databaseURL: "https://daihuaye-a25ed.firebaseio.com",
-    		storageBucket: "daihuaye-a25ed.appspot.com",
-    		messagingSenderId: "911331947635"
-		};
-		firebase.initializeApp(config);
-		var experiences = [];
-		var db = firebase.database().ref('/experiences');
-		db.on('value', function(data) {
-			experiences = data.val();
-			var source = $('#section-experience').html();
-			var template = Handlebars.compile(source);
-			var vmw = template(experiences.VMware);
-			var getInsured = template(experiences.GetInsured);
-			var nibbol = template(experiences.nibbol);
-			var TeletracNavman = template(experiences.TeletracNavman);
-			$('.experience').append(vmw, getInsured, nibbol, TeletracNavman);
-		});
-		
-	</script>
-	
+	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>	
 	<script type="text/x-handlebars-template" id="section-experience">
 		<div class="section-experience">
 			<h5 class="section-experience-title">
@@ -233,6 +208,7 @@
 			</ul>
 		</div>
 	</script>
+	<script type="text/javascript" src="./script.js"></script>
 </body>
 
 </html>
